@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/Player/player idle-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://assets/Chain.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Nodes/Bullet.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Nodes/Spawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/Sounds/GrapplingHookShot.wav" type="AudioStream" id=6]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 17.1699
+height = 23.6216
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 18.0
+height = 22.3155
+
+[node name="Player" type="KinematicBody2D"]
+collision_layer = 2
+script = ExtResource( 2 )
+
+[node name="HookShot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+max_distance = 1000.0
+area_mask = 2
+
+[node name="Chain" parent="." instance=ExtResource( 3 )]
+
+[node name="Spawner" parent="." instance=ExtResource( 5 )]
+bulletScene = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( -2, 2 )
+texture = ExtResource( 1 )
+hframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.33371, 2.50169 )
+shape = SubResource( 1 )
+
+[node name="Enemy detector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="Detector" type="CollisionShape2D" parent="Enemy detector"]
+modulate = Color( 0.407843, 0, 1, 1 )
+position = Vector2( 0, 2.37004 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="Enemy detector" to="." method="_on_Enemy_detector_body_entered"]

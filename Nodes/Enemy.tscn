@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/EnemyIco.png" type="Texture" id=1]
+[ext_resource path="res://Enemy.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 29.7094, 30.3519 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 29.4662, 30.0614 )
+
+[node name="Enemy" type="KinematicBody2D"]
+collision_layer = 8
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+position = Vector2( 1.90735e-06, -3.8147e-06 )
+scale = Vector2( 4.75, 4.775 )
+
+[node name="Bullet Detector" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 16
+priority = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet Detector"]
+modulate = Color( 0.968627, 1, 0, 1 )
+shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="Bullet Detector" to="." method="_on_Bullet_Detector_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
