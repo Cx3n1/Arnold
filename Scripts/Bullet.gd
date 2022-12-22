@@ -4,7 +4,7 @@ export var smokeScene : PackedScene
 export var impactScene : PackedScene
 
 
-var _speed = 1000
+var _speed = 1500
 var direction = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.

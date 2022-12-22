@@ -1,0 +1,15 @@
+[remap]
+
+importer="gif.animated.texture.plugin"
+type="SpriteFrames"
+path="res://.import/die (6).gif-0df7e55b9ee11503dd5fd57126fb0db6.tres"
+
+[deps]
+
+source_file="res://assets/Enemy/die (6).gif"
+dest_files=[ "res://.import/die (6).gif-0df7e55b9ee11503dd5fd57126fb0db6.tres" ]
+
+[params]
+
+Filter=false
+MipMaps=false

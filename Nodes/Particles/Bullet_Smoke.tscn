@@ -77,7 +77,7 @@ tracks/0/keys = {
 "values": [ false ]
 }
 
-[node name="Bullet_Somek" type="Particles2D"]
+[node name="Bullet_Somke" type="Particles2D"]
 material = SubResource( 1 )
 emitting = false
 lifetime = 0.4

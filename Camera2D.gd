@@ -3,6 +3,7 @@ This script controls the dynamic camera.
 """
 extends Camera2D
 
+
 # Radius of the zone in the middle of the screen where the cam doesn't move
 const DEAD_ZONE = 50
 
@@ -15,4 +16,4 @@ func _input(event: InputEvent) -> void:
 			# _target.normalized() is the direction in which to move
 			# _target.length() - DEAD_ZONE is the distance the mouse is outside of the dead zone
 			# 0.5 is an arbitrary scalar
-			self.position = _target.normalized() * (_target.length() - DEAD_ZONE) * 0.05
+			self.position = _target.normalized() * (_target.length() - DEAD_ZONE) * 0.1
